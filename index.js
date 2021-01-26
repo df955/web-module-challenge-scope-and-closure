@@ -83,23 +83,32 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(inning, innings){
+function finalScore(inningCB, inningsNum) {
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i = 0; i < inningsNum; i++) {
+    homeScore = homeScore + inningCB();
+    awayScore = awayScore + inningCB();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  }
+}
+console.log(finalScore(inning, 9));
+/* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
+Use the getInningScore() function below to do the following:
+  1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
+  2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
+
+function getInningScore(inningCB) {
   return{
     Home: inning(),
     Away: inning()
     
   }
 }
-console.log(finalScore(inning, 9));
 
-/* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
-Use the getInningScore() function below to do the following:
-  1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
-  2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
-
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-}
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -143,11 +152,42 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
+ function scoreboard(inning, numI) {
   /* CODE HERE */
-}
+ let home = [];
+ let away = [];
+  let homeT = 0;
+  let awayT = 0;
 
 
+ for (let i = 0; i < numI; i++) {
+   home[i] = inning();
+   homeT = home[0] + home[1] + home[2] + home[3] + home[4] + home[5] + home[6] + home[7]+ home[8];
+ }
+ for (let i = 0; i < numI; i++){
+   away[i] = inning();
+   awayT = away[0] + away[1] + away[2] + away[3] + away[4] + away[5] + away[6] + away[7] + away[8];
+ }if( homeT == awayT){
+  return "This game will require extra innings"
+ } else{
+ return {
+   "1st inning" :`${home[0]} - ${away[0]}`, 
+   "2nd inning" :`${home[1]} - ${away[1]}`,  
+   "3rd inning" : `${home[2]} - ${away[2]}`, 
+   "4th inning" :`${home[3]} - ${away[3]}`, 
+   "5th inning" : `${home[4]} - ${away[4]}`,   
+   "6th inning" : `${home[5]} - ${away[5]}`,  
+   "7th inning" : `${home[6]} - ${away[6]}`, 
+   "8th inning" : `${home[7]} - ${away[7]}`,  
+   "9th inning" : `${home[8]} - ${away[8]}`, 
+   "Final Score" : `${homeT} - ${awayT}`, 
+
+ }
+
+ }
+};
+
+console.log(scoreboard(inning, 9));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
