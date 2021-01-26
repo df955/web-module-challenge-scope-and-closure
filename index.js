@@ -152,7 +152,7 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
- function scoreboard(inning, numI) {
+ function scoreboard(inning, numInnings) {
   /* CODE HERE */
  let home = [];
  let away = [];
@@ -160,15 +160,15 @@ Use the scoreboard function below to do the following:
   let awayT = 0;
 
 
- for (let i = 0; i < numI; i++) {
+ for (let i = 0; i < numInnings; i++) {
    home[i] = inning();
    homeT = home[0] + home[1] + home[2] + home[3] + home[4] + home[5] + home[6] + home[7]+ home[8];
  }
- for (let i = 0; i < numI; i++){
+ for (let i = 0; i < numInnings; i++){
    away[i] = inning();
    awayT = away[0] + away[1] + away[2] + away[3] + away[4] + away[5] + away[6] + away[7] + away[8];
  }if( homeT == awayT){
-  return "This game will require extra innings"
+  return "This game will require extra innings" + `  Home:${homeT} -  Away:${awayT}`
  } else{
  return {
    "1st inning" :`${home[0]} - ${away[0]}`, 
